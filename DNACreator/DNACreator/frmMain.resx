@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txtHtml.Text" xml:space="preserve">
+    <value>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Test HTML-PDF file&lt;/title&gt;
+        
+        &lt;style type='text/css'&gt;
+            .last-cell {
+                text-align: center;
+                font-style: italic;
+            }
+            code {
+                color: #484848;
+                background-color: rgb(250, 250, 250);
+            }
+			span{
+				position:relative;
+				font-family:微软雅黑;
+				font-size:13px;
+				width:67.23px;
+			}
+			.maximg{
+				position:absolute;
+				width:1135px;
+				height:709px;
+			}
+			body{
+				margin:0 0;
+			}
+			.divtext{
+				margin-left: 120px;
+				top: 430px;
+				position: relative;
+width:1000px;
+			}
+			.divh1{
+				border: 0px;
+				border-bottom:1.5px;
+				margin-left:190px;
+				color: white;
+				border-style: solid;
+				width: 400px;
+				height:2px;
+				padding:0px;
+				position:relative;
+			}
+			.divh2{
+				border: 0px;
+				border-bottom:1.5px;
+				margin-bottom: 0px;
+				margin-left:190px;
+				color: white;
+				border-style: solid;
+				width: 400px;
+				height:2px;
+				padding:0px;
+				position:absolute;
+			}
+			.divh3{
+				border: 0px;
+				border-bottom:1.5px;
+				margin-bottom: 0px;
+				margin-left:190px;
+				color: white;
+				border-style: solid;
+				width: 400px;
+				height:2px;
+				padding:0px;
+				position:absolute;
+				letter-spacing:0px;
+			}
+			.divran1{
+				font-family:微软雅黑;
+				font-size:30px;
+				color:white;
+				margin-bottom:24px;
+			}
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+            &lt;img class='maximg' src='d:/f.jpg'&gt;
+			&lt;div class='divtext'&gt;
+				&lt;div style='width:1000px'&gt;
+					&lt;div class='divran1'&gt;姓　　&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;名&amp;nbsp;&lt;div class='divh1'&gt;&amp;nbsp;&amp;nbsp;&lt;div style='position:relative;bottom:75px;'&gt;&amp;nbsp;&amp;nbsp;涨价卷之女&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+					&lt;div class='divran1'&gt;样&amp;nbsp;&amp;nbsp;品&amp;nbsp;&amp;nbsp;编&amp;nbsp;&amp;nbsp;号&amp;nbsp;&lt;div class='divh2'&gt;&amp;nbsp;&amp;nbsp;&lt;div style='position:relative;bottom:75px;'&gt;&amp;nbsp;&amp;nbsp;16SDFSDSFFDSFDS&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+					&lt;div class='divran1'&gt;DNA档&amp;nbsp;案&amp;nbsp;号&amp;nbsp;&lt;div class='divh3'&gt;&amp;nbsp;&amp;nbsp;&lt;div style='position:relative;bottom:75px;'&gt;&amp;nbsp;&amp;nbsp;BGIF3252846110740&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+</root>

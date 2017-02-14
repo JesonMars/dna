@@ -29,47 +29,725 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Test()
         {
-            SynchronizedPechkin sc = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(10, 10, 10, 10))
+            var kuan = int.Parse(Request["kuan"]);
+            var gao = int.Parse(Request["gao"]);
+            SynchronizedPechkin sc = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(0,0,0,0))
                 .SetDocumentTitle("Ololo").SetCopyCount(1).SetImageQuality(1000)
-                .SetLosslessCompression(true).SetMaxImageDpi(96).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
-                .SetPaperSize(PaperKind.Letter).SetCopyCount(2));
-            byte[] buf = sc.Convert(new ObjectConfig(), @"<html>
+                .SetLosslessCompression(true).SetMaxImageDpi(350).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
+                .SetPaperSize(new PaperSize("cus",570,910)).SetCopyCount(1));
+            
+#region boy反面有三行
+
+            var boyfanhtmlallthree = @"<html>
     <head>
         <title>Test HTML-PDF file</title>
         
         <style type='text/css'>
-            
-            p { text-indent: 3em; }
             .last-cell {
                 text-align: center;
                 font-style: italic;
             }
             code {
                 color: #484848;
-                border: 1px solid #dadada;
                 background-color: rgb(250, 250, 250);
+                /*border: 1px solid #dadada;
                 padding: 5px;
-                margin: 15px; display: block;
+                margin: 15px; display: block;*/
             }
+			span{
+				position:relative;
+				font-family:微软雅黑;
+				font-size:13px;
+				width:67.23px;
+				/*letter-spacing:1px;*/
+			}
+			.maximg{
+				position:absolute;
+				width:1135px;
+				height:709px;
+			}
+			body{
+				margin:0 0;
+			}
+			.divtext{
+				margin-left: 80px;
+				top: 255px;
+				position: relative;
+			}
+			.divtext1{
+				margin-left: 80px;
+				top: 480px;
+				position: relative;
+			}
+			.divhr{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+			}
+			.divhr1{
+				border: 0px;
+				margin-bottom: 0px;
+				background-color: black;
+                color: black;
+				border-style: solid;
+				width: 990px;
+				height: 0.5px;
+				padding: 0.5px;
+				margin-top: 2px;
+				position: absolute;
+				top: 17px;
+			}
+			.divhr2{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+				top: 130px;
+				position: absolute;
+			}
+            .divhr3{
+				background-image: url(d:/heng.png);
+				background-repeat: repeat-x;
+				width: 992px;
+				height: 3px;
+				margin-top: 18px;
+			}
+			.divran1{
+				width:68px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divran2{
+				width:72px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divtxt1{
+				position: absolute;
+				top: 30px;
+				text-align:center;
+			}
+			.divtxt2{
+				position: absolute;
+				top: 65px;
+				text-align:center;
+			}
+			.divtxt3{
+				position: absolute;
+				top: 100px;
+				text-align:center;
+			}
+			.divtxt4{
+				position: absolute;
+			}
+            hr{
+				position: absolute;
+				background-color: black;
+				border: 0px;
+				padding: 0.5px;
+				width: 990px;
+				top: 15px;
+			}
         </style>
     </head>
     <body>
-        <h1>Hello world!</h1>
         <p>
-            
-            <img width='270' height='129' src='d:/1.jpg'>
+            <img class='maximg' src='d:/1.jpg'>
+			<div class='divtext'>
+				<div class='divhr'></div>
+				<div>
+					<div class='divran1' style='margin-left: 8px;'>1号染色体</div>
+					<div class='divran1' style='margin-left: 10px;'>2号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>3号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>4号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>5号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>6号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>7号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>8号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>9号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>10号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>11号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>12号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt3'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divhr2'></div>
+			</div>
+			<div class='divtext1'>
+				<div class='divhr'></div>
+				<div class='divtxt4'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divtxt3'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr2'></div>
+			</div>
         </p>
-        
-        <table>
-            <tr><th>Property</th><th>Value</th></tr>
-            <tr><td>Text</td><td>Html to pdf test app</td></tr>
-            <tr><td>Object type</td><td>Form</td></tr>
-            <tr><td>Purpose</td><td><code>libraray test</code></td></tr>
-        </table>
     </body>
-</html>");
+</html>";
+#endregion
+            
+#region boy反面有两行
+
+            var boyfanhtml1 = @"<html>
+    <head>
+        <title>Test HTML-PDF file</title>
+        
+        <style type='text/css'>
+            .last-cell {
+                text-align: center;
+                font-style: italic;
+            }
+            code {
+                color: #484848;
+                background-color: rgb(250, 250, 250);
+            }
+			span{
+				position:relative;
+				font-family:微软雅黑;
+				font-size:13px;
+				width:67.23px;
+			}
+			.maximg{
+				position:absolute;
+				width:1135px;
+				height:709px;
+			}
+			body{
+				margin:0 0;
+			}
+			.divtext{
+				margin-left: 80px;
+				top: 255px;
+				position: relative;
+			}
+			.divtext1{
+				margin-left: 80px;
+				top: 480px;
+				position: relative;
+			}
+			.divhr{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+			}
+			.divhr1{
+				border: 0px;
+				margin-bottom: 0px;
+				background-color: black;
+                color: black;
+				border-style: solid;
+				width: 990px;
+				height: 0.5px;
+				padding: 0.5px;
+				margin-top: 2px;
+				position: absolute;
+				top: 17px;
+			}
+			.divhr2{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+				top: 130px;
+				position: absolute;
+			}
+            .divhr3{
+				background-image: url(d:/heng.png);
+				background-repeat: repeat-x;
+				width: 992px;
+				height: 3px;
+				margin-top: 18px;
+			}
+            .divhr4{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+				top: 100px;
+				position: absolute;
+			}
+			.divran1{
+				width:68px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divran2{
+				width:72px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divtxt1{
+				position: absolute;
+				top: 30px;
+				text-align:center;
+			}
+			.divtxt2{
+				position: absolute;
+				top: 65px;
+				text-align:center;
+			}
+			.divtxt3{
+				position: absolute;
+				top: 100px;
+				text-align:center;
+			}
+			.divtxt4{
+				position: absolute;
+			}
+            hr{
+				position: absolute;
+				background-color: black;
+				border: 0px;
+				padding: 0.5px;
+				width: 990px;
+				top: 15px;
+			}
+        </style>
+    </head>
+    <body>
+        <p>
+            <img class='maximg' src='d:/1.jpg'>
+			<div class='divtext'>
+				<div class='divhr'></div>
+				<div>
+					<div class='divran1' style='margin-left: 8px;'>1号染色体</div>
+					<div class='divran1' style='margin-left: 10px;'>2号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>3号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>4号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>5号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>6号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>7号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>8号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>9号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>10号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>11号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>12号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt3'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divhr2'></div>
+			</div>
+			<div class='divtext1'>
+				<div class='divhr'></div>
+				<div class='divtxt4'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr4'></div>
+			</div>
+        </p>
+    </body>
+</html>";
+            #endregion
+
+#region 正面
+
+            var zhengmianhtml = @"<html>
+    <head>
+        <title>Test HTML-PDF file</title>
+        
+        <style type='text/css'>
+            .last-cell {
+                text-align: center;
+                font-style: italic;
+            }
+            code {
+                color: #484848;
+                background-color: rgb(250, 250, 250);
+            }
+			span{
+				position:relative;
+				font-family:微软雅黑;
+				font-size:13px;
+				width:67.23px;
+			}
+			.maximg{
+				position:absolute;
+				width:1135px;
+				height:709px;
+			}
+			body{
+				margin:0 0;
+			}
+			.divtext{
+				margin-left: 80px;
+				top: 255px;
+				position: relative;
+			}
+			.divtext1{
+				margin-left: 80px;
+				top: 480px;
+				position: relative;
+			}
+			.divhr{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+			}
+			.divhr1{
+				border: 0px;
+				margin-bottom: 0px;
+				background-color: black;
+                color: black;
+				border-style: solid;
+				width: 990px;
+				height: 0.5px;
+				padding: 0.5px;
+				margin-top: 2px;
+				position: absolute;
+				top: 17px;
+			}
+			.divhr2{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+				top: 130px;
+				position: absolute;
+			}
+            .divhr3{
+				background-image: url(d:/heng.png);
+				background-repeat: repeat-x;
+				width: 992px;
+				height: 3px;
+				margin-top: 18px;
+			}
+            .divhr4{
+				border: 1.5px;
+				margin-bottom: 0px;
+				color: black;
+				border-style: solid;
+				width: 990px;
+				top: 100px;
+				position: absolute;
+			}
+			.divran1{
+				width:68px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divran2{
+				width:72px;
+				float:left;
+				font-family:微软雅黑;
+				font-size:13px;
+			}
+			.divtxt1{
+				position: absolute;
+				top: 30px;
+				text-align:center;
+			}
+			.divtxt2{
+				position: absolute;
+				top: 65px;
+				text-align:center;
+			}
+			.divtxt3{
+				position: absolute;
+				top: 100px;
+				text-align:center;
+			}
+			.divtxt4{
+				position: absolute;
+			}
+            hr{
+				position: absolute;
+				background-color: black;
+				border: 0px;
+				padding: 0.5px;
+				width: 990px;
+				top: 15px;
+			}
+        </style>
+    </head>
+    <body>
+        <p>
+            <img class='maximg' src='d:/1.jpg'>
+			<div class='divtext'>
+				<div class='divhr'></div>
+				<div>
+					<div class='divran1' style='margin-left: 8px;'>1号染色体</div>
+					<div class='divran1' style='margin-left: 10px;'>2号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>3号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>4号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>5号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>6号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>7号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>8号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>9号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>10号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>11号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>12号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divtxt3'>
+					<div class='divran1' style='margin-left: 8px;'>/</div>
+					<div class='divran1' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 14px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran1' style='margin-left: 16px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 13px;'>/</div>
+					<div class='divran2' style='margin-left: 10px;'>/</div>
+				</div>
+				<div class='divhr2'></div>
+			</div>
+			<div class='divtext1'>
+				<div class='divhr'></div>
+				<div class='divtxt4'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr3'></div>
+				<div class='divtxt1'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divtxt2'>
+					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
+					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
+					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
+					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
+					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
+					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+				</div>
+				<div class='divhr4'></div>
+			</div>
+        </p>
+    </body>
+</html>";
+            #endregion
+            byte[] buf = sc.Convert(new ObjectConfig().SetPrintBackground(true),zhengmianhtml);
             try
             {
                 string fn = Path.GetTempFileName()+".pdf";

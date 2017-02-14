@@ -1,0 +1,9 @@
+D:\g\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.exe.config
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.csprojResolveAssemblyReference.cache
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.frmMain.resources
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.Properties.Resources.resources
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.csproj.GenerateResource.Cache
+D:\g\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.exe
+D:\g\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.pdb
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.exe
+D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.pdb
