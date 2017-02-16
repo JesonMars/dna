@@ -27,6 +27,8 @@ namespace DNACreator
             txtkuan.Text = 570.ToString();
             txtgao.Text = 910.ToString();
             txtDestinationFolder.Text = destPath;
+            txtFileSelect.Text = "";
+            this.txtHtml.Visible = false;
 
             FileDialog = new OpenFileDialog();
             FolderBrowser = new FolderBrowserDialog();
@@ -877,77 +879,99 @@ width:1000px;
         }
         private void btnCreateNew_Click(object sender, EventArgs e)
         {
+            var dnaSerialStr =
+                "[{\"Key\":\"TPOX\",\"Value\":\"2\"},{\"Key\":\"CSF1PO\",\"Value\":\"5\"},{\"Key\":\"PENTAD\",\"Value\":\"21\"},{\"Key\":\"VWA\",\"Value\":\"12\"},{\"Key\":\"TH01\",\"Value\":\"11\"},{\"Key\":\"FGA\",\"Value\":\"4\"},{\"Key\":\"PENTAE\",\"Value\":\"15\"},{\"Key\":\"AMEL\",\"Value\":\"sex\"},{\"Key\":\"Yindel\",\"Value\":\"Y\"},{\"Key\":\"DYS391\",\"Value\":\"Y\"},{\"Key\":\"SE33\",\"Value\":\"6\"},{\"Key\":\"YGATAH4\",\"Value\":\"Y\"}]";
             if (!File.Exists(txtFileSelect.Text))
             {
                 MessageBox.Show("请选择dna数据集表", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var excelHelper = new ExcelHelper();
-            var datas=excelHelper.GetDataBySheetName("Sheet1");
-            var dnaDatas=new List<DNADataEntity>();
-            datas.RemoveAt(0);
-            datas.RemoveAt(datas.Count-1);
+            var jsonHelper = new JsonHelper();
+            var excelHelper = new ExcelHelper(txtFileSelect.Text);
+            var dnaDatas = new List<DNADataEntity>();
 
+            var dnaSerial=new Dictionary<string,string>();
+            dnaSerial = jsonHelper.JsonDeserialize<Dictionary<string, string>>(dnaSerialStr);            
+
+            var datas=excelHelper.GetFirstSheetData();
+            excelHelper.Dispose();
+            datas.RemoveAt(0);
+
+#region 将数据转化为对象
             foreach (var data in datas)
             {
+                //从数据表中把数据加载入对象
                 var dnaData=new DNADataEntity();
                 dnaData.Name = data[0];
                 dnaData.DataNum = data[1];
                 dnaData.DnaNum = data[2];
                 dnaData.DnaData = data[3];
-                dnaData.DnaDataDetail=new Dictionary<int, List<string>>();
+                //初始化该人的dna数据
+                dnaData.DnaDataDetail=new Dictionary<string, List<string>>();
+                //获取该人的dna数据信息详情
                 foreach (var ranseti in dnaData.DnaData.Split(';'))
                 {
+                    if (string.IsNullOrEmpty(ranseti))
+                    {
+                        continue;;
+                    }
+                    //获取到该序列的序列号信息
                     var dnaShuju = ranseti.Split(':');
-                    var dnaXuHao=dnaShuju[0];
+                    string dnaXuHao=dnaShuju[0];
+                    //初始化该序列所在的染色体编号
+                    string ranSeTiXuHao = "";
+
+                    //处理性别或y染色体
                     switch (dnaXuHao.ToUpper())
                     {
-                        case "TPOX":
-                            dnaXuHao = "2";
-                            break;
-                        case "CSF1PO":
-                            dnaXuHao = "5";
-                            break;
-                        case "PENTAD":
-                            dnaXuHao = "21";
-                            break;
-                        case "VWA":
-                            dnaXuHao = "12";
-                            break;
-                        case "TH01":
-                            dnaXuHao = "11";
-                            break;
-                        case "FGA":
-                            dnaXuHao = "4";
-                            break;
-                        case "PENTAE":
-                            dnaXuHao = "15";
-                            break;
                         case "AMEL":
+                            dnaXuHao = Regex.Replace(dnaShuju[1], "[^A-Za-z]*", "", RegexOptions.IgnoreCase).ToUpper();
+                            if (dnaXuHao == "XX")
+                            {
+                                dnaData.Sex = "女";
+                            }
+                            else
+                            {
+                                dnaData.Sex = "子";
+                            }
+                            continue;
                             break;
                     }
-                    dnaXuHao = Regex.Match(dnaXuHao, "D[0-9]*S").Value;
-                    dnaXuHao = Regex.Replace(dnaXuHao, "[a-z][A-Z]","");
-                    var ransenticur=dnaData.DnaDataDetail.FirstOrDefault(x => x.Key == int.Parse(dnaXuHao));
-                    
-                    if (ransenticur.Value == null)
+                    if (dnaSerial.ContainsKey(dnaXuHao.ToUpper()))
                     {
-                        var dnaShujus = new List<string>();
-                        dnaShujus.Add(dnaShuju[1]);
-                        dnaData.DnaDataDetail.Add(int.Parse(dnaXuHao),dnaShujus);
+                        //处理其他特殊染色体
+                        ranSeTiXuHao = dnaSerial[dnaXuHao.ToUpper()];
                     }
                     else
                     {
-                        ransenticur.Value.Add(dnaShuju[1]);
+                        //处理一般染色体
+                        dnaXuHao = Regex.Match(dnaXuHao, "D[0-9]*S").Value;
+                        dnaXuHao = Regex.Replace(dnaXuHao, "[a-zA-Z]", "");
+                        ranSeTiXuHao = dnaXuHao;
+                    }
+                    //获取该染色体序号下的染色体
+                    var ransenti = dnaData.DnaDataDetail.FirstOrDefault(x => x.Key == ranSeTiXuHao);
+                    var ransetishuju = "";
+                    Regex.Matches(dnaShuju[1], "[0-9,.]*").Cast<Match>().ToList().ForEach(x =>
+                    {
+                        ransetishuju += x.Value;
+                    });
+                    ransetishuju = string.IsNullOrEmpty(ransetishuju) ? "/" : ransetishuju;
+                    if (ransenti.Value == null)
+                    {
+                        var dnaShujus = new List<string>();
+                        dnaShujus.Add(ransetishuju);
+                        dnaData.DnaDataDetail.Add(ranSeTiXuHao, dnaShujus);
+                    }
+                    else
+                    {
+                        ransenti.Value.Add(ransetishuju);
                     }
                 }
+                dnaDatas.Add(dnaData);
             }
-
-            SynchronizedPechkin sc = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(0, 0, 0, 0))
-                .SetDocumentTitle("Ololo").SetCopyCount(1).SetImageQuality(1000)
-                .SetLosslessCompression(true).SetMaxImageDpi(350).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
-                .SetPaperSize(new PaperSize("cus", int.Parse(txtkuan.Text), int.Parse(txtgao.Text))).SetCopyCount(1));
+#endregion
 
             #region boy反面有三行
 
@@ -1259,7 +1283,7 @@ width:1000px;
 				position: absolute;
 			}
             .divhr3{
-				background-image: url(d:/heng.png);
+				background-image: url([1]);
 				background-repeat: repeat-x;
 				width: 992px;
 				height: 3px;
@@ -1316,7 +1340,7 @@ width:1000px;
     </head>
     <body>
         <p>
-            <img class='maximg' src='d:/1.jpg'>
+            <img class='maximg' src='[2]'>
 			<div class='divtext'>
 				<div class='divhr'></div>
 				<div>
@@ -1335,46 +1359,46 @@ width:1000px;
 				</div>
 				<div class='divhr3'></div>
 				<div class='divtxt1'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-1)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-1)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-1)</div>
 				</div>
 				<div class='divtxt2'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-2)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-2)</div>
 				</div>
 				<div class='divtxt3'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-2)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-2)</div>
 				</div>
 				<div class='divhr2'></div>
 			</div>
@@ -1391,31 +1415,37 @@ width:1000px;
 					<div class='divran2' style='margin-left: 13px;'>20号染色体</div>
 					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
 					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+                    <div class='divran2' style='margin-left: 20px;'>X染色体</div>
+                    <div class='divran2' style='margin-left: 2px;'>Y染色体</div>
 				</div>
 				<div class='divhr3'></div>
 				<div class='divtxt1'>
-					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
-					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
-					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
-					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+					<div class='divran1' style='margin-left: 6px;'>(13-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(14-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(15-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(16-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(17-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(18-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(19-1)</div>
+					<div class='divran2' style='margin-left: 11px;'>(20-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(21-1)</div>
+					<div class='divran2' style='margin-left: 10px;'>(22-1)</div>
+                    <div class='divran2' style='margin-left: 10px;'>/</div>
+                    <div class='divran2' style='margin-left: 2px;'>(Y-1)</div>
 				</div>
 				<div class='divtxt2'>
-					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
-					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
-					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
-					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+					<div class='divran1' style='margin-left: 6px;'>(13-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(14-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(15-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(16-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(17-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(18-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(19-2)</div>
+					<div class='divran2' style='margin-left: 11px;'>(20-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(21-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(22-2)</div>
+                    <div class='divran2' style='margin-left: 10px;'>/</div>
+                    <div class='divran2' style='margin-left: 2px;'>(Y-2)</div>
 				</div>
 				<div class='divhr4'></div>
 			</div>
@@ -1493,7 +1523,7 @@ width:1000px;
 				position: absolute;
 			}
             .divhr3{
-				background-image: url(d:/heng.png);
+				background-image: url(D:/g/outsource/dna/DNACreator/DNACreator/bin/Debug/heng.png);
 				background-repeat: repeat-x;
 				width: 992px;
 				height: 3px;
@@ -1550,7 +1580,7 @@ width:1000px;
     </head>
     <body>
         <p>
-            <img class='maximg' src='d:/1.jpg'>
+            <img class='maximg' src='[2]'>
 			<div class='divtext'>
 				<div class='divhr'></div>
 				<div>
@@ -1569,46 +1599,46 @@ width:1000px;
 				</div>
 				<div class='divhr3'></div>
 				<div class='divtxt1'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-1)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-1)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-1)</div>
 				</div>
 				<div class='divtxt2'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-2)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-2)</div>
 				</div>
 				<div class='divtxt3'>
-					<div class='divran1' style='margin-left: 8px;'>/</div>
-					<div class='divran1' style='margin-left: 10px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 14px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran1' style='margin-left: 16px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 13px;'>/</div>
-					<div class='divran2' style='margin-left: 10px;'>/</div>
+					<div class='divran1' style='margin-left: 8px;'>(1-2)</div>
+					<div class='divran1' style='margin-left: 10px;'>(2-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(3-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(4-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(5-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(6-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(7-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(8-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(9-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(10-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(11-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(12-2)</div>
 				</div>
 				<div class='divhr2'></div>
 			</div>
@@ -1625,31 +1655,37 @@ width:1000px;
 					<div class='divran2' style='margin-left: 13px;'>20号染色体</div>
 					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
 					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+                    <div class='divran2' style='margin-left: 20px;'>X染色体</div>
+                    <div class='divran2' style='margin-left: 2px;'>X染色体</div>
 				</div>
 				<div class='divhr3'></div>
 				<div class='divtxt1'>
-					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
-					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
-					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
-					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+					<div class='divran1' style='margin-left: 6px;'>(13-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(14-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(15-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(16-1)</div>
+					<div class='divran1' style='margin-left: 14px;'>(17-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(18-1)</div>
+					<div class='divran1' style='margin-left: 16px;'>(19-1)</div>
+					<div class='divran2' style='margin-left: 11px;'>(20-1)</div>
+					<div class='divran2' style='margin-left: 13px;'>(21-1)</div>
+					<div class='divran2' style='margin-left: 10px;'>(22-1)</div>
+                    <div class='divran2' style='margin-left: 10px;'>/</div>
+                    <div class='divran2' style='margin-left: 2px;'>/</div>
 				</div>
 				<div class='divtxt2'>
-					<div class='divran1' style='margin-left: 6px;'>13号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>14号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>15号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>16号染色体</div>
-					<div class='divran1' style='margin-left: 14px;'>17号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>18号染色体</div>
-					<div class='divran1' style='margin-left: 16px;'>19号染色体</div>
-					<div class='divran2' style='margin-left: 11px;'>20号染色体</div>
-					<div class='divran2' style='margin-left: 13px;'>21号染色体</div>
-					<div class='divran2' style='margin-left: 10px;'>22号染色体</div>
+					<div class='divran1' style='margin-left: 6px;'>(13-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(14-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(15-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(16-2)</div>
+					<div class='divran1' style='margin-left: 14px;'>(17-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(18-2)</div>
+					<div class='divran1' style='margin-left: 16px;'>(19-2)</div>
+					<div class='divran2' style='margin-left: 11px;'>(20-2)</div>
+					<div class='divran2' style='margin-left: 13px;'>(21-2)</div>
+					<div class='divran2' style='margin-left: 10px;'>(22-2)</div>
+                    <div class='divran2' style='margin-left: 10px;'>/</div>
+                    <div class='divran2' style='margin-left: 2px;'>/</div>
 				</div>
 				<div class='divhr4'></div>
 			</div>
@@ -1739,30 +1775,89 @@ width:1000px;
     </head>
     <body>
 
-            <img class='maximg' src='d:/f.jpg'>
+            <img class='maximg' src='[2]'>
 			<div class='divtext'>
 				<div style='width:1000px'>
-					<div class='divran1'>姓　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;<div class='divh1'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;涨价卷之女</div></div></div>
-					<div class='divran1'>样&nbsp;&nbsp;品&nbsp;&nbsp;编&nbsp;&nbsp;号&nbsp;<div class='divh2'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;16SDFSDSFFDSFDS</div></div></div>
-					<div class='divran1'>DNA档&nbsp;案&nbsp;号&nbsp;<div class='divh3'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;BGIF3252846110740</div></div></div>
+					<div class='divran1'>姓　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;<div class='divh1'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;dnas-1</div></div></div>
+					<div class='divran1'>样&nbsp;&nbsp;品&nbsp;&nbsp;编&nbsp;&nbsp;号&nbsp;<div class='divh2'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;dnas-2</div></div></div>
+					<div class='divran1'>DNA档&nbsp;案&nbsp;号&nbsp;<div class='divh3'>&nbsp;&nbsp;<div style='position:relative;bottom:75px;'>&nbsp;&nbsp;dnas-3</div></div></div>
 				</div>
 			</div>
     </body>
 </html>";
             #endregion
 
-            byte[] buf = sc.Convert(new ObjectConfig().SetPrintBackground(true), txtHtml.Text);
-            try
-            {
-                FileStream fs = File.Create("d:/12.pdf", buf.Length);
-                fs.Write(buf, 0, buf.Length);
-                fs.Close();
+            var exePath = AppDomain.CurrentDomain.BaseDirectory;
+            exePath=exePath.Replace("/","\\");
+            boyfanhtmltwo = boyfanhtmltwo.Replace("[1]", string.Format("{0}heng.png", exePath))
+                .Replace("[2]", string.Format("{0}boyfan.jpg", exePath));
+            girlfanhtml1 = girlfanhtml1.Replace("[1]", string.Format("{0}heng.png", exePath))
+                .Replace("[2]", string.Format("{0}girlfan.jpg", exePath));
+            zhengmianhtml = zhengmianhtml.Replace("[2]", string.Format("{0}zheng.jpg", exePath));
 
-                Process myProcess = new Process();
-                myProcess.StartInfo.FileName = "d:/12.pdf";
-                myProcess.Start();
+            foreach (var dnaDataEntity in dnaDatas)
+            {
+                //生成该人的正面卡片
+                var pdfHtmlZheng = zhengmianhtml;
+                pdfHtmlZheng=Regex.Replace(pdfHtmlZheng, "dnas-1", dnaDataEntity.Name);
+                pdfHtmlZheng=Regex.Replace(pdfHtmlZheng, "dnas-2", dnaDataEntity.DataNum);
+                pdfHtmlZheng=Regex.Replace(pdfHtmlZheng, "dnas-3", dnaDataEntity.DnaNum);
+                            
+                //生成该人的反面卡片
+                var pdfHtmlFan = "";
+                if (dnaDataEntity.Sex == "女")
+                {
+                    pdfHtmlFan = girlfanhtml1;
+                }
+                else
+                {
+                    pdfHtmlFan = boyfanhtmltwo;
+                }
+                for (int i = 0; i < 23; i++)
+                {
+                    var key = (i==22)?"Y":(i+1).ToString();
+                    var ransetiThis = dnaDataEntity.DnaDataDetail.FirstOrDefault(x=>x.Key==key);
+                    for (int j = 1; j < 4; j++)
+                    {
+                        var bianhaodata = "";
+                        if (ransetiThis.Value == null || ransetiThis.Value.Count<j|| string.IsNullOrEmpty(ransetiThis.Value[j - 1]))
+                        {
+                            bianhaodata = "/";
+                        }
+                        else
+                        {
+                            bianhaodata = ransetiThis.Value[j - 1];
+                        }
+                        pdfHtmlFan=pdfHtmlFan.Replace(string.Format("({0}-{1})", key??"dd", j), bianhaodata);
+                    }
+                }
+                var fpath = string.Format("{0}/{1}", txtDestinationFolder.Text, dnaDataEntity.Name);
+                try
+                {
+                    var obj = new ObjectConfig().SetPrintBackground(true).SetAffectPageCounts(true);
+                    SynchronizedPechkin sc = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(0, 0, 0, 0))
+                    .SetDocumentTitle("Olo").SetImageQuality(1000).SetCopyCount(1)
+                    .SetLosslessCompression(true).SetMaxImageDpi(350).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
+                    .SetPaperSize(new PaperSize("cus", int.Parse(txtkuan.Text), int.Parse(txtgao.Text))));
+
+                    byte[] fan = sc.Convert(obj, pdfHtmlFan);
+                    FileStream fs = new FileStream(fpath+"_反面.pdf", FileMode.Create);
+                    fs.Write(fan, 0, fan.Length);
+                    fs.Close();
+
+                    byte[] zheng = sc.Convert(obj, pdfHtmlZheng);
+                    fs = new FileStream(fpath + "_正面.pdf", FileMode.Create);
+                    fs.Write(zheng, 0, zheng.Length);
+                    fs.Close();
+                    
+                    //Process myProcess = new Process();
+                    //myProcess.StartInfo.FileName = fpath;
+                    //myProcess.Start();
+                }
+                catch { }
+                
             }
-            catch { }
+
         }
 
 

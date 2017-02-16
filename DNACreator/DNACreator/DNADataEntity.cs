@@ -27,6 +27,6 @@ namespace DNACreator
         /// 性别
         /// </summary>
         public string Sex { get; set; }
-        public Dictionary<int,List<string>> DnaDataDetail { get; set; }  
+        public Dictionary<string,List<string>> DnaDataDetail { get; set; }  
     }
 }

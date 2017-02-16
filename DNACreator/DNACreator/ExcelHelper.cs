@@ -83,6 +83,35 @@ namespace Helper
             return dt;
         }
 
+        public List<List<string>> GetFirstSheetData()
+        {
+            var dt = new List<List<string>>();
+            if (Sheets != null)
+            {
+                var sheet = (Worksheet)Sheets.get_Item(1);
+                if (sheet != null)
+                {
+                    foreach (Range row in sheet.UsedRange.Rows)
+                    {
+                        List<string> strs = new List<string>();
+                        foreach (Range cell in row.Columns)
+                        {
+                            try
+                            {
+                                strs.Add(cell.Value != null ? cell.Value[Type.Missing].ToString() : "");
+                            }
+                            catch (Exception e)
+                            {
+                                strs.Add("");
+                            }
+                        }
+                        dt.Add(strs);
+                    }
+                }
+            }
+            return dt;
+        }
+
         public List<Dictionary<string,string>> GetDicsExceptHeader(object sheetName)
         {
             var dt = new List<Dictionary<string, string>>();

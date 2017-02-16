@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtHtml = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtkuan = new System.Windows.Forms.TextBox();
@@ -46,28 +45,18 @@
             // 
             // txtHtml
             // 
-            this.txtHtml.Location = new System.Drawing.Point(13, 13);
+            this.txtHtml.Location = new System.Drawing.Point(21, 196);
             this.txtHtml.Multiline = true;
             this.txtHtml.Name = "txtHtml";
             this.txtHtml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtHtml.Size = new System.Drawing.Size(784, 392);
+            this.txtHtml.Size = new System.Drawing.Size(661, 290);
             this.txtHtml.TabIndex = 0;
             this.txtHtml.Text = resources.GetString("txtHtml.Text");
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(14, 123);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(391, 40);
-            this.btnCreate.TabIndex = 1;
-            this.btnCreate.Text = "生成";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 424);
+            this.label1.Location = new System.Drawing.Point(18, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 2;
@@ -76,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 461);
+            this.label2.Location = new System.Drawing.Point(18, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 3;
@@ -84,35 +73,39 @@
             // 
             // txtkuan
             // 
-            this.txtkuan.Location = new System.Drawing.Point(45, 419);
+            this.txtkuan.Location = new System.Drawing.Point(43, 45);
             this.txtkuan.Name = "txtkuan";
             this.txtkuan.Size = new System.Drawing.Size(100, 21);
             this.txtkuan.TabIndex = 4;
             // 
             // txtgao
             // 
-            this.txtgao.Location = new System.Drawing.Point(45, 458);
+            this.txtgao.Location = new System.Drawing.Point(43, 84);
             this.txtgao.Name = "txtgao";
             this.txtgao.Size = new System.Drawing.Size(100, 21);
             this.txtgao.TabIndex = 5;
             // 
             // gbCity
             // 
+            this.gbCity.Controls.Add(this.btnCreateNew);
             this.gbCity.Controls.Add(this.btnSelectFoler);
             this.gbCity.Controls.Add(this.btnSelectFile);
+            this.gbCity.Controls.Add(this.txtgao);
+            this.gbCity.Controls.Add(this.txtkuan);
             this.gbCity.Controls.Add(this.txtDestinationFolder);
+            this.gbCity.Controls.Add(this.label2);
             this.gbCity.Controls.Add(this.txtFileSelect);
-            this.gbCity.Controls.Add(this.btnCreate);
-            this.gbCity.Location = new System.Drawing.Point(162, 411);
+            this.gbCity.Controls.Add(this.label1);
+            this.gbCity.Location = new System.Drawing.Point(21, 41);
             this.gbCity.Name = "gbCity";
-            this.gbCity.Size = new System.Drawing.Size(517, 169);
+            this.gbCity.Size = new System.Drawing.Size(667, 136);
             this.gbCity.TabIndex = 6;
             this.gbCity.TabStop = false;
             this.gbCity.Text = "城市初始化";
             // 
             // btnSelectFoler
             // 
-            this.btnSelectFoler.Location = new System.Drawing.Point(336, 85);
+            this.btnSelectFoler.Location = new System.Drawing.Point(486, 84);
             this.btnSelectFoler.Name = "btnSelectFoler";
             this.btnSelectFoler.Size = new System.Drawing.Size(69, 23);
             this.btnSelectFoler.TabIndex = 8;
@@ -122,7 +115,7 @@
             // 
             // btnSelectFile
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(336, 47);
+            this.btnSelectFile.Location = new System.Drawing.Point(486, 46);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(69, 23);
             this.btnSelectFile.TabIndex = 2;
@@ -133,7 +126,7 @@
             // txtDestinationFolder
             // 
             this.txtDestinationFolder.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtDestinationFolder.Location = new System.Drawing.Point(14, 86);
+            this.txtDestinationFolder.Location = new System.Drawing.Point(164, 85);
             this.txtDestinationFolder.Name = "txtDestinationFolder";
             this.txtDestinationFolder.ReadOnly = true;
             this.txtDestinationFolder.Size = new System.Drawing.Size(322, 21);
@@ -143,7 +136,7 @@
             // txtFileSelect
             // 
             this.txtFileSelect.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtFileSelect.Location = new System.Drawing.Point(14, 48);
+            this.txtFileSelect.Location = new System.Drawing.Point(164, 47);
             this.txtFileSelect.Name = "txtFileSelect";
             this.txtFileSelect.ReadOnly = true;
             this.txtFileSelect.Size = new System.Drawing.Size(322, 21);
@@ -152,7 +145,7 @@
             // 
             // btnCreateNew
             // 
-            this.btnCreateNew.Location = new System.Drawing.Point(573, 458);
+            this.btnCreateNew.Location = new System.Drawing.Point(561, 46);
             this.btnCreateNew.Name = "btnCreateNew";
             this.btnCreateNew.Size = new System.Drawing.Size(100, 60);
             this.btnCreateNew.TabIndex = 9;
@@ -163,13 +156,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 610);
-            this.Controls.Add(this.btnCreateNew);
+            this.ClientSize = new System.Drawing.Size(736, 549);
             this.Controls.Add(this.gbCity);
-            this.Controls.Add(this.txtgao);
-            this.Controls.Add(this.txtkuan);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHtml);
             this.Name = "frmMain";
             this.Text = "frmMain";
@@ -183,7 +171,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtHtml;
-        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtkuan;

@@ -6,3 +6,11 @@ C:\Users\Administrator\Documents\Visual Studio 2010\Projects\MvcApplication1\Mvc
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\MvcApplication1\MvcApplication1\bin\Pechkin.dll
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\MvcApplication1\MvcApplication1\bin\Pechkin.Synchronized.dll
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\bin\MvcApplication1.dll
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\bin\MvcApplication1.pdb
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\bin\Common.Logging.dll
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\bin\Pechkin.dll
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\bin\Pechkin.Synchronized.dll
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.csprojResolveAssemblyReference.cache
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.dll
+D:\g\outsource\dna\MvcApplication1\MvcApplication1\obj\Debug\MvcApplication1.pdb

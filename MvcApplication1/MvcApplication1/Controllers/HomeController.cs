@@ -37,7 +37,7 @@ namespace MvcApplication1.Controllers
             SynchronizedPechkin sc = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(0,0,0,0))
                 .SetDocumentTitle("Ololo").SetCopyCount(1).SetImageQuality(1000)
                 .SetLosslessCompression(true).SetMaxImageDpi(350).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
-                .SetPaperSize(new PaperSize("cus",570,910)).SetCopyCount(1));
+                .SetPaperSize(PaperKind.Letter));
             
 #region boy反面有三行
 
@@ -755,6 +755,15 @@ namespace MvcApplication1.Controllers
                 FileStream fs = new FileStream(fn, FileMode.Create);
                 fs.Write(buf, 0, buf.Length);
                 fs.Close();
+
+                SynchronizedPechkin sc1 = new SynchronizedPechkin(new GlobalConfig().SetMargins(new Margins(0, 0, 0, 0))
+                .SetDocumentTitle("Ololo").SetCopyCount(1).SetImageQuality(1000)
+                .SetLosslessCompression(true).SetMaxImageDpi(350).SetOutlineGeneration(true).SetOutputDpi(1200).SetPaperOrientation(true)
+                .SetPaperSize(PaperKind.Letter));
+                byte[] buf1 = sc1.Convert(new ObjectConfig().SetPrintBackground(true), boyfanhtml1);
+                FileStream fs1 = new FileStream(fn, FileMode.Append);
+                fs1.Write(buf1, 0, buf1.Length);
+                fs1.Close();
 
                 Response.Clear();
                 Response.AddHeader("content-disposition", "attachment; filename=123.pdf");//强制下载 
