@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DnaCreatorInstall", "DnaCreatorInstall\DnaCreatorInstall.vdproj", "{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = DNACreator.vsmdi
@@ -45,6 +47,12 @@ Global
 		{AAC87E18-A80E-42B8-B015-66B0BA164B72}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AAC87E18-A80E-42B8-B015-66B0BA164B72}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AAC87E18-A80E-42B8-B015-66B0BA164B72}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Debug|Any CPU.ActiveCfg = Debug
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Debug|x86.ActiveCfg = Debug
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Release|Any CPU.ActiveCfg = Release
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Release|Mixed Platforms.ActiveCfg = Release
+		{FA0625C7-CFCA-4B7F-A956-7B843C7528A7}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
