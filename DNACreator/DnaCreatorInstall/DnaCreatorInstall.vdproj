@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2648471D21C943E9856C413B4F3C0F8E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,20 +27,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3704AB8642D6E2F4BDFF41F45CBFAAEE"
+        "MsmKey" = "8:_3FA9271CC6854C968D92CBC9561705FC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43548D8E70601BBA79FBB782F4B9ED4D"
         "OwnerKey" = "8:_499D6F7D64C843659119AF9AADB641C4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3704AB8642D6E2F4BDFF41F45CBFAAEE"
-        "OwnerKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
+        "MsmKey" = "8:_43548D8E70601BBA79FBB782F4B9ED4D"
+        "OwnerKey" = "8:_68067B9B815CEA9E631D83093DE9B08F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3FA9271CC6854C968D92CBC9561705FC"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_43548D8E70601BBA79FBB782F4B9ED4D"
+        "OwnerKey" = "8:_8F09CBE2958CA17D1146A968FADDB043"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,6 +69,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_68067B9B815CEA9E631D83093DE9B08F"
+        "OwnerKey" = "8:_499D6F7D64C843659119AF9AADB641C4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7138F0DBA1A64516926DB0FBD0DE12D6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -81,20 +87,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF44E908AF02EF888AC0095D540D81CB"
+        "MsmKey" = "8:_8F09CBE2958CA17D1146A968FADDB043"
         "OwnerKey" = "8:_499D6F7D64C843659119AF9AADB641C4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF44E908AF02EF888AC0095D540D81CB"
-        "OwnerKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AF44E908AF02EF888AC0095D540D81CB"
-        "OwnerKey" = "8:_F17048DF8088BF0EC9B0CD107A487402"
+        "MsmKey" = "8:_8F09CBE2958CA17D1146A968FADDB043"
+        "OwnerKey" = "8:_68067B9B815CEA9E631D83093DE9B08F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -105,26 +105,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BA15C026CDC8AC4330CDA201706B0E2F"
-        "OwnerKey" = "8:_499D6F7D64C843659119AF9AADB641C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BA15C026CDC8AC4330CDA201706B0E2F"
-        "OwnerKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BA15C026CDC8AC4330CDA201706B0E2F"
-        "OwnerKey" = "8:_F17048DF8088BF0EC9B0CD107A487402"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BA15C026CDC8AC4330CDA201706B0E2F"
-        "OwnerKey" = "8:_AF44E908AF02EF888AC0095D540D81CB"
+        "MsmKey" = "8:_B840A48BA6294676923BBC8F64FB0812"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -135,26 +117,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F17048DF8088BF0EC9B0CD107A487402"
+        "MsmKey" = "8:_F602068D2A78AFEF12322065E8D8FC3A"
         "OwnerKey" = "8:_499D6F7D64C843659119AF9AADB641C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F17048DF8088BF0EC9B0CD107A487402"
-        "OwnerKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BA15C026CDC8AC4330CDA201706B0E2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,19 +130,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F17048DF8088BF0EC9B0CD107A487402"
+        "OwnerKey" = "8:_68067B9B815CEA9E631D83093DE9B08F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AF44E908AF02EF888AC0095D540D81CB"
+        "OwnerKey" = "8:_8F09CBE2958CA17D1146A968FADDB043"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3704AB8642D6E2F4BDFF41F45CBFAAEE"
+        "OwnerKey" = "8:_F602068D2A78AFEF12322065E8D8FC3A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_43548D8E70601BBA79FBB782F4B9ED4D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -199,6 +169,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -215,6 +206,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -284,37 +283,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3704AB8642D6E2F4BDFF41F45CBFAAEE"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_3704AB8642D6E2F4BDFF41F45CBFAAEE"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3FA9271CC6854C968D92CBC9561705FC"
             {
             "SourcePath" = "8:..\\DNACreator\\bin\\Debug\\mingwm10.dll"
@@ -333,6 +301,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43548D8E70601BBA79FBB782F4B9ED4D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Common.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_43548D8E70601BBA79FBB782F4B9ED4D"
+                    {
+                    "Name" = "8:Common.Logging.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Common.Logging.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D6380195FD44A9E9BA868C44E6880E5"
@@ -375,6 +374,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_68067B9B815CEA9E631D83093DE9B08F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Pechkin.Synchronized, Version=0.5.8.1, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_68067B9B815CEA9E631D83093DE9B08F"
+                    {
+                    "Name" = "8:Pechkin.Synchronized.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Pechkin.Synchronized.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7138F0DBA1A64516926DB0FBD0DE12D6"
             {
             "SourcePath" = "8:..\\DNACreator\\bin\\Debug\\ssleay32.dll"
@@ -415,14 +445,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AF44E908AF02EF888AC0095D540D81CB"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8F09CBE2958CA17D1146A968FADDB043"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Pechkin, Version=0.5.8.1, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_AF44E908AF02EF888AC0095D540D81CB"
+                    "_8F09CBE2958CA17D1146A968FADDB043"
                     {
                     "Name" = "8:Pechkin.dll"
                     "Attributes" = "3:512"
@@ -466,21 +496,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA15C026CDC8AC4330CDA201706B0E2F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B840A48BA6294676923BBC8F64FB0812"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Common.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_BA15C026CDC8AC4330CDA201706B0E2F"
-                    {
-                    "Name" = "8:Common.Logging.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Common.Logging.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\DNACreator\\archive.ico"
+            "TargetName" = "8:archive.ico"
             "Tag" = "8:"
             "Folder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
             "Condition" = "8:"
@@ -494,7 +513,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C309834B411548E6A7B5E241DB9F74F4"
@@ -517,20 +536,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F17048DF8088BF0EC9B0CD107A487402"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F602068D2A78AFEF12322065E8D8FC3A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Pechkin.Synchronized, Version=0.5.8.1, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F17048DF8088BF0EC9B0CD107A487402"
+                    "_F602068D2A78AFEF12322065E8D8FC3A"
                     {
-                    "Name" = "8:Pechkin.Synchronized.dll"
+                    "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Pechkin.Synchronized.dll"
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
@@ -594,21 +613,6 @@
         }
         "Locator"
         {
-            "{39E1837C-0DB9-45A2-89C8-438377A77565}:_9E9BBACE144E4970AE77268EBF73AAA6"
-            {
-            "Name" = "8:.net4"
-            "Folder" = "8:[SystemFolder]"
-            "Depth" = "2:0"
-            "FileName" = "8:"
-            "MinVesion" = "8:"
-            "MaxVersion" = "8:"
-            "MinSize" = "8:"
-            "MaxSize" = "8:"
-            "MinDate" = "8:"
-            "MaxDate" = "8:"
-            "Languages" = "8:"
-            "Property" = "8:FILEEXISTS1"
-            }
         }
         "MsiBootstrapper"
         {
@@ -620,20 +624,20 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DnaCreator"
         "ProductCode" = "8:{0D0DBD31-E137-4A84-A600-17A1738C8665}"
-        "PackageCode" = "8:{19BC672B-8511-482F-98E8-7E7E9E79092C}"
+        "PackageCode" = "8:{27CA092A-D103-4356-845E-823093CA8614}"
         "UpgradeCode" = "8:{50E9CCC1-0CC4-4A29-815A-5118980685C0}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:领创未来(北京)科技有限公司"
+        "Manufacturer" = "8:"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:DnaCreatorInstall"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:默认公司名称"
+        "ARPCONTACT" = "8:领创未来(北京)科技有限公司"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -740,7 +744,21 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_04F9C62F67D8458C911FF2D81DD36962"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6C0EE01CA9AB4A75B2E816C4F9693793"
+            {
+            "Name" = "8:DnaCreator"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_499D6F7D64C843659119AF9AADB641C4"
+            "Folder" = "8:_483BA2D0E30C473C9A2C0C855DE65119"
+            "WorkingFolder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EB0AF18B142E4392BC12912853AAF176"
             {
             "Name" = "8:DNACreator"
             "Arguments" = "8:"
@@ -748,9 +766,9 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
+            "Target" = "8:_499D6F7D64C843659119AF9AADB641C4"
             "Folder" = "8:_DDBEC37768C24D2B89E2E8661C7F1DA2"
-            "WorkingFolder" = "8:_483BA2D0E30C473C9A2C0C855DE65119"
+            "WorkingFolder" = "8:_861759D0ADB747F89C16CEFF32A904B1"
             "Icon" = "8:"
             "Feature" = "8:"
             }
@@ -1153,34 +1171,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1B98C2EA3D9D45C2A4E2B4293BC07BB9"
-            {
-            "SourcePath" = "8:..\\DNACreator\\obj\\x86\\Debug\\DNACreator.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_483BA2D0E30C473C9A2C0C855DE65119"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{9863324F-55B2-4607-9C52-18928AC091F0}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_499D6F7D64C843659119AF9AADB641C4"
             {
             "SourcePath" = "8:..\\DNACreator\\obj\\x86\\Debug\\DNACreator.exe"

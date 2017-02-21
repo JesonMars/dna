@@ -1799,7 +1799,7 @@ width:1000px;
                 #endregion
 
                 var exePath = AppDomain.CurrentDomain.BaseDirectory;
-                exePath = exePath.Replace("\\", "/");
+                //exePath = exePath.Replace("\\", "/");
                 boyfanhtmltwo = boyfanhtmltwo.Replace("[1]", string.Format("{0}heng.png", exePath))
                     .Replace("[2]", string.Format("{0}boyfan.jpg", exePath));
                 girlfanhtml1 = girlfanhtml1.Replace("[1]", string.Format("{0}heng.png", exePath))
