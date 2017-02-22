@@ -7,3 +7,11 @@ D:\g\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.exe
 D:\g\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.pdb
 D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.exe
 D:\g\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.pdb
+E:\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.exe.config
+E:\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.exe
+E:\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.pdb
+E:\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.exe
+E:\outsource\dna\DNACreator\DNACreator\bin\Debug\DNACreator.pdb
+E:\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.frmMain.resources
+E:\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.Properties.Resources.resources
+E:\outsource\dna\DNACreator\DNACreator\obj\x86\Debug\DNACreator.csproj.GenerateResource.Cache

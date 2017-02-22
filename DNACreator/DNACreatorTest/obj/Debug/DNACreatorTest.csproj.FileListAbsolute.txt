@@ -9,3 +9,14 @@ D:\g\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\DNACreator.pdb
 D:\g\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.csprojResolveAssemblyReference.cache
 D:\g\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.dll
 D:\g\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.pdb
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\DNACreatorTest.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\DNACreatorTest.pdb
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\DNACreator.exe
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\Newtonsoft.Json.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\Pechkin.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\Pechkin.Synchronized.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\Common.Logging.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\bin\Debug\DNACreator.pdb
+E:\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.csprojResolveAssemblyReference.cache
+E:\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.dll
+E:\outsource\dna\DNACreator\DNACreatorTest\obj\Debug\DNACreatorTest.pdb

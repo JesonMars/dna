@@ -887,6 +887,11 @@ width:1000px;
                 MessageBox.Show("请选择dna数据集表", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (!Directory.Exists(txtDestinationFolder.Text))
+            {
+                MessageBox.Show("请选择pdf文件的保存地址", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             btnCreateNew.Enabled = false;
             var jsonHelper = new JsonHelper();
             var excelHelper = new ExcelHelper(txtFileSelect.Text);
