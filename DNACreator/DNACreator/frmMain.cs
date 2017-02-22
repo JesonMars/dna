@@ -1746,7 +1746,7 @@ width:1000px;
 				    color: white;
 				    border-style: solid;
 				    width: 400px;
-				    height:2px;
+				    height:1.5px;
 				    padding:0px;
 				    position:relative;
 			    }
@@ -1758,7 +1758,7 @@ width:1000px;
 				    color: white;
 				    border-style: solid;
 				    width: 400px;
-				    height:2px;
+				    height:1.5px;
 				    padding:0px;
 				    position:absolute;
 			    }
@@ -1770,7 +1770,7 @@ width:1000px;
 				    color: white;
 				    border-style: solid;
 				    width: 400px;
-				    height:2px;
+				    height:1.5px;
 				    padding:0px;
 				    position:absolute;
 				    letter-spacing:0px;
