@@ -1799,7 +1799,7 @@ width:1000px;
                 #endregion
 
                 var exePath = AppDomain.CurrentDomain.BaseDirectory;
-                //exePath = exePath.Replace("\\", "/");
+                exePath = exePath.Replace("\\", "/");
                 boyfanhtmltwo = boyfanhtmltwo.Replace("[1]", string.Format("{0}heng.png", exePath))
                     .Replace("[2]", string.Format("{0}boyfan.jpg", exePath));
                 girlfanhtml1 = girlfanhtml1.Replace("[1]", string.Format("{0}heng.png", exePath))
@@ -1843,7 +1843,7 @@ width:1000px;
                             pdfHtmlFan = pdfHtmlFan.Replace(string.Format("({0}-{1})", key ?? "dd", j), bianhaodata);
                         }
                     }
-                    var fpath = string.Format("{0}/{1}", txtDestinationFolder.Text, dnaDataEntity.Name);
+                    var fpath = string.Format("{0}/{1}_{2}", txtDestinationFolder.Text, dnaDataEntity.Name,dnaDataEntity.DataNum);
 
                     var obj = new ObjectConfig().SetPrintBackground(true).SetAffectPageCounts(true);
                     SynchronizedPechkin sc =
@@ -1876,6 +1876,7 @@ width:1000px;
                 MessageBox.Show(ex.Message,"出错",MessageBoxButtons.OK);
             }
             btnCreateNew.Enabled = true;
+            MessageBox.Show("生成成功！", "成功", MessageBoxButtons.OK);
         }
 
 
